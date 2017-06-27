@@ -2,20 +2,19 @@ const add = require('./commands/add')
 const done = require('./commands/done')
 const list = require('./commands/list')
 
-const inputFunction = (firstArgument, secondArgument) => {
-    switch (firstArgument) {
-        case 'add':
-            add.addFunction(secondArgument)
-            break
-        case 'done':
-            done.doneFunction(secondArgument)
-            break
-        case 'list':
-            list.listFunction(secondArgument)
-            break 
-        default:
-            console.log('Invalid Argument')
-    }
-}
+const firstArgument = process.argv[2]
+const secondArgument = process.argv[3]
 
-inputFunction(process.argv[2], process.argv[3])
+switch (firstArgument) {
+  case 'add':
+    add(secondArgument)
+    break
+  case 'done':
+    done(secondArgument)
+    break
+  case 'list':
+    list(secondArgument)
+    break
+  default:
+    console.log('Invalid Argument')
+}
